@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,15 +9,75 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/mobile.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 </head>
+
 <body>
     <div class="container">
-        <div class="center-div">
-            <button id="bmiApp" type="button" class="btn btn-primary">Open BMI App</button>
-            <button id="retireApp" type="button" class="btn btn-success">Open Retirement App</button>
-            <button id="exitApp" class="btn btn-danger">Exit</button>
+        <div id="darkCover" class="hidden">
+
         </div>
+        <nav class="navbar navbar-expand-lg bg-dark"> 
+              
+            <ul class="navbar-nav"> 
+                <li id="bmiApp" class="nav-item"> 
+                    <a class="nav-link" href="#">BMI App</a> 
+                </li> 
+              
+                <li id="retireApp" class="nav-item"> 
+                    <a class="nav-link" href="#">Retirement Calc</a> 
+                </li> 
+              
+                <li id="exitApp" class="nav-item"> 
+                    <a class="nav-link" href="#">Exit</a> 
+                </li>
+            </ul> 
+        </nav> 
+        <div class="center-div">
+            <div id="bmiDisplay" class="hidden">
+                <h2>BMI Calculator: </h2>
+                <div>
+                    <label for="" class="form-label">Height: </label>
+                    <input type="number" name="height" id="height" class="small-input">
+                    <label for="height" class="small-add">ft</label>
+                    <input type="number" name="inches" id="inches" class="small-input">
+                    <label for="inches" class="small-add">inches</label>
+                </div>
+                <div>
+                    <label for="weight" class="form-label">Weight: </label>
+                    <input type="number" class="small-input" name="weight" id="weight">
+                    <label for="weight" class="small-add">lbs.</label>
+                </div>
+                <div><button onclick="calculateBMI()">Submit</button></div>
+                <div id="yourResults" class="hidden">Your Results: <span id="yourFinalResults"></span>
+                    <div id="customMessage"></div>
+                </div>
+            </div>
+            <div id="retireDisplay" class="hidden">
+                <h2>Retirement: </h2>
+                <div>
+                    <label for="currentAge" class="form-label">Current Age: </label>
+                    <input type="number" name="currentAge" id="currentAge" class="small-input">
+                </div>
+                <div>
+                    <label for="annualSalary" class="form-label">Annual Salary: </label>
+                    <input type="number" name="annualSalary" id="annualSalary" class="small-input">
+                </div>
+                <div>
+                    <label for="percentSaved" class="form-label">Percentage Saved: </label>
+                    <input type="number" name="percentSaved" class="small-input" id="percentSaved">%
+                </div>
+                <div>
+                    <label for="savingsGoal">Desired Retirement Savings Goal: </label>
+                    <input type="number" name="savingsGoal" id="savingsGoal" class="small-input">
+                </div>
+                <div>
+                    <button onclick="calculateRetirement()">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
 </body>
 <footer>
@@ -24,4 +85,5 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/script.js"></script>
 </footer>
+
 </html>
