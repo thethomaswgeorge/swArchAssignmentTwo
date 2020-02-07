@@ -47,19 +47,25 @@ function calculateBMI() {
 function calculateRetirement() {
     var currentAge = document.getElementById('currentAge').value;
     var annualSal  = document.getElementById('annualSalary').value;
-    var percentS   = document.getElementById('percentSaved').value /100;
+    var percentS   = document.getElementById('percentSaved').value;
     var savingsG   = document.getElementById('savingsGoal').value;
     var yearlyUserSaved;
     var startingSaved = 0;
+    if(percentS < '1') {
+
+    }else {
+        percentS = percentS / 100;
+    }
 
     do{
         yearlyUserSaved = annualSal * percentS;
         yearlyCompSaved = yearlyUserSaved * .35;
         startingSaved = startingSaved + yearlyUserSaved + yearlyCompSaved;
-        $('#retirementTable tr:last').after('<tr><td>'+currentAge+'</td><td>'+yearlyUserSaved+'</td><td>'+yearlyCompSaved+'</td><td>'+startingSaved+'</td></tr>');
-        console.log('Year: '+currentAge+' Currently Saved: '+startingSaved+'  Savings goal: '+savingsG);
+        $('#retirementTable tr:last').after('<tr><td>'+currentAge+'</td><td>$'+yearlyUserSaved+'</td><td>$'+yearlyCompSaved+'</td><td>$'+startingSaved+'</td></tr>');
+        console.log('Year: '+currentAge+' Currently Saved: $'+startingSaved+'  Savings goal: $'+savingsG);
         if(startingSaved > savingsG) {
             $("#displayRetireResults").append("<b>You will achieve your savings goal at age "+currentAge+" with a total of $"+startingSaved+" saved!</b>");
+            
         } else {
             currentAge++;
         }
@@ -69,6 +75,7 @@ function calculateRetirement() {
         console.log("You are dead");
     }else {
         $("#displayRetireResults").removeClass("hidden");
+        alert("You will achieve your savings goal at age "+currentAge+" with a total of $"+startingSaved+" saved!");
         
     }
 }
