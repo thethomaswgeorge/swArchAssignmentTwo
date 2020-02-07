@@ -15,3 +15,7 @@ html,body {
     top:0;
     left:0;
 }
+table {
+    width: 100%;
+    text-align: center;
+}
