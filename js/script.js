@@ -83,11 +83,12 @@ function calculateRetirement() {
         }while((startingSaved <= savingsG)&& (currentAge != 101));
         if((startingSaved < savingsG) && (currentAge == '101')) {
             $("#displayDeath").removeClass("hidden");
+            $("#displayRetireResults").addClass("hidden");
             console.log("You are dead");
         }else {
             $("#displayRetireResults").removeClass("hidden");
+            $("#displayDeath").addClass("hidden");
             alert("You will achieve your savings goal at age "+currentAge+" with a total of $"+startingSaved+" saved!");
-            
         }
     } else {
         alert("Please complete all the inputs");
