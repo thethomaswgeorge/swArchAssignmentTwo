@@ -64,34 +64,37 @@ function calculateRetirement() {
     var yearlyUserSaved;
     var startingSaved = 0;
     if((currentAge != "") && (annualSal != "") && (percentS != "") && (savingsG != "")) {
-
-        if(percentS < '1') {
-
-        }else {
-            percentS = percentS / 100;
-        }
+        if(currentAge <= 0) {
+            alert("You cannot save due to not being alive.");
+        } else {
+            if(percentS < '1') {
     
-        do{
-            yearlyUserSaved = annualSal * percentS;
-            yearlyCompSaved = yearlyUserSaved * .35;
-            startingSaved = startingSaved + yearlyUserSaved + yearlyCompSaved;
-            $('#retirementTable tr:last').after('<tr><td>'+currentAge+'</td><td>$'+yearlyUserSaved+'</td><td>$'+yearlyCompSaved+'</td><td>$'+startingSaved+'</td></tr>');
-            console.log('Year: '+currentAge+' Currently Saved: $'+startingSaved+'  Savings goal: $'+savingsG);
-            if(startingSaved > savingsG) {
-                $("#displayRetireResults").append("<b>You will achieve your savings goal at age "+currentAge+" with a total of $"+startingSaved+" saved!</b>");
-                
-            } else {
-                currentAge++;
+            }else {
+                percentS = percentS / 100;
             }
-        }while((startingSaved <= savingsG)&& (currentAge != 101));
-        if((startingSaved < savingsG) && (currentAge == '101')) {
-            $("#displayDeath").removeClass("hidden");
-            $("#displayRetireResults").addClass("hidden");
-            console.log("You are dead");
-        }else {
-            $("#displayRetireResults").removeClass("hidden");
-            $("#displayDeath").addClass("hidden");
-            alert("You will achieve your savings goal at age "+currentAge+" with a total of $"+startingSaved+" saved!");
+        
+            do{
+                yearlyUserSaved = annualSal * percentS;
+                yearlyCompSaved = yearlyUserSaved * .35;
+                startingSaved = startingSaved + yearlyUserSaved + yearlyCompSaved;
+                $('#retirementTable tr:last').after('<tr><td>'+currentAge+'</td><td>$'+yearlyUserSaved+'</td><td>$'+yearlyCompSaved+'</td><td>$'+startingSaved+'</td></tr>');
+                console.log('Year: '+currentAge+' Currently Saved: $'+startingSaved+'  Savings goal: $'+savingsG);
+                if(startingSaved > savingsG) {
+                    $("#displayRetireResults").append("<b>You will achieve your savings goal at age "+currentAge+" with a total of $"+startingSaved+" saved!</b>");
+                    
+                } else {
+                    currentAge++;
+                }
+            }while((startingSaved <= savingsG)&& (currentAge != 101));
+            if((startingSaved < savingsG) && (currentAge == '101')) {
+                $("#displayDeath").removeClass("hidden");
+                $("#displayRetireResults").addClass("hidden");
+                console.log("You are dead");
+            }else {
+                $("#displayRetireResults").removeClass("hidden");
+                $("#displayDeath").addClass("hidden");
+                alert("You will achieve your savings goal at age "+currentAge+" with a total of $"+startingSaved+" saved!");
+            }
         }
     } else {
         alert("Please complete all the inputs");
