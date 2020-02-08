@@ -14,12 +14,16 @@ $(document).ready(function() {
 });
 
 function calculateBMI() {
-    var htFt = parseFloat(document.getElementById('height').value);
-    var htIn = parseFloat(document.getElementById('inches').value);
-
+    var htFt = document.getElementById('height').value;
+    var htIn = document.getElementById('inches').value;
+    console.log(htFt);
+    console.log(htIn);
+    
     var wt   = document.getElementById('weight').value;
 
     if((htFt != "") && (htIn != "") && (wt != "")) {
+        htIn = parseFloat(htIn);
+        htFt = parseFloat(htFt);
         var kg   = wt * .45;
         var totalwt= (htFt * 12) + htIn;
         var meter= totalwt * 0.025;
