@@ -54,6 +54,8 @@ function calculateBMI() {
     }
 }
 function calculateRetirement() {
+    $("#displayRetireResults").addClass("hidden");
+    $("#displayDeath").addClass("hidden");
     var currentAge = document.getElementById('currentAge').value;
     var annualSal  = document.getElementById('annualSalary').value;
     var percentS   = document.getElementById('percentSaved').value;
