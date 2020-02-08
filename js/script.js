@@ -58,6 +58,7 @@ function calculateRetirement() {
     var annualSal  = document.getElementById('annualSalary').value;
     var percentS   = document.getElementById('percentSaved').value;
     var savingsG   = document.getElementById('savingsGoal').value;
+    $("#displayRetireResults").html('<table id="retirementTable"><tr><th>Age</th><th>$ User Saved</th><th>$ Employer Matched</th><th>Current Total</th></tr></table>');
     var yearlyUserSaved;
     var startingSaved = 0;
     if((currentAge != "") && (annualSal != "") && (percentS != "") && (savingsG != "")) {
