@@ -1,0 +1,11 @@
+language: node_js
+node:
+  - 12
+cache:
+  npm: false
+
+before script:
+  - npm install
+  - npm start
+
+script: npm start

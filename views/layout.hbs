@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Homepage | Thomas George</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="css/mobile.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+        <style>
+            html,body {
+    padding:0;
+    margin:0;
+    color: #000;
+}
+.hidden {
+    display: none;
+}
+#darkCover {
+    height: 100vh;
+    width: 100vw;
+    z-index: 1001;
+    background-color: #000;
+    position: fixed;
+    top:0;
+    left:0;
+}
+table {
+    width: 100%;
+    text-align: center;
+}
+.navbar {
+    width: 100%;
+    padding: 15px 0;
+    box-sizing: border-box;
+}
+.bg-dark {
+    background-color: #333;
+    color: #fff;
+}
+ul.navbar-nav li {
+    list-style-type: none;
+    display:inline-block;
+    padding: 5px 8px;
+    box-sizing: border-box;
+    color: #fff;
+}
+a {
+    text-decoration: none;
+    color:inherit;
+}
+        </style>
+</head>
+<body>
+    {{{ body }}}
+</body>
+<footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"  type="text/javascript"></script>
+    <script src="js/bootstrap.min.js"  type="text/javascript"></script>
+    <script>
+        $(document).ready(function() {
+    $("#bmiApp").on("click",function() {
+        $("#bmiDisplay").removeClass("hidden");
+        $("#retireDisplay").addClass("hidden");
+        $("#height").focus();
+    });
+    $("#retireApp").on("click", function() {
+        $("#bmiDisplay").addClass("hidden");
+        $("#retireDisplay").removeClass("hidden");
+    });
+    $("#exitApp").on("click",function() {
+        $("#darkCover").removeClass("hidden");
+    })
+});
+
+function calculateBMI() {
+    var htFt = document.getElementById('height').value;
+    var htIn = document.getElementById('inches').value;
+    console.log(htFt);
+    console.log(htIn);
+    
+    var wt   = document.getElementById('weight').value;
+
+    if((htFt != "") && (htIn != "") && (wt != "")) {
+        htIn = parseFloat(htIn);
+        htFt = parseFloat(htFt);
+        var kg   = wt * .45;
+        var totalwt= (htFt * 12) + htIn;
+        var meter= totalwt * 0.025;
+        console.log("Meters: "+meter);
+        console.log("Height inches: " +totalwt);
+        var meter = meter *meter;
+        var bmi   = (kg/meter).toFixed(1);
+        $("#yourResults").removeClass("hidden");
+        document.getElementById("yourFinalResults").innerText = bmi+'%';
+    
+        if((bmi < 18.5) && (bmi > 0)) {
+            document.getElementById("customMessage").innerText = 'You are currently underweight';
+        }else if((bmi >= 18.5) && (bmi <= 24.9)) {
+            //Normal Weight
+            document.getElementById("customMessage").innerText = 'You are currently normal weight';
+        }else if((bmi >= 25) && (bmi <= 29.9)){
+            //Overweight
+            document.getElementById("customMessage").innerText = 'You are currently Overweight';
+        }else if((bmi >= 30)) {
+            document.getElementById("customMessage").innerText = 'You are currently Obese';
+            //Obese
+        }else {
+            document.getElementById("customMessage").innerHTML = 'You are currently <i class="fas fa-skull-crossbones"></i>';
+            //Dead
+        }
+    } else {
+        alert("Please complete all the inputs");
+    }
+}
+function calculateRetirement() {
+    $("#displayRetireResults").addClass("hidden");
+    $("#displayDeath").addClass("hidden");
+    var currentAge = document.getElementById('currentAge').value;
+    var annualSal  = document.getElementById('annualSalary').value;
+    var percentS   = document.getElementById('percentSaved').value;
+    var savingsG   = document.getElementById('savingsGoal').value;
+    $("#displayRetireResults").html('<table id="retirementTable"><tr><th>Age</th><th>$ User Saved</th><th>$ Employer Matched</th><th>Current Total</th></tr></table>');
+    var yearlyUserSaved;
+    var startingSaved = 0;
+    if((currentAge != "") && (annualSal != "") && (percentS != "") && (savingsG != "")) {
+        if(currentAge <= 0) {
+            alert("You cannot save due to not being alive.");
+        } else {
+            if(percentS < '1') {
+    
+            }else {
+                percentS = percentS / 100;
+            }
+        
+            do{
+                yearlyUserSaved = annualSal * percentS;
+                yearlyCompSaved = yearlyUserSaved * .35;
+                startingSaved = startingSaved + yearlyUserSaved + yearlyCompSaved;
+                $('#retirementTable tr:last').after('<tr><td>'+currentAge+'</td><td>$'+yearlyUserSaved+'</td><td>$'+yearlyCompSaved+'</td><td>$'+startingSaved+'</td></tr>');
+                console.log('Year: '+currentAge+' Currently Saved: $'+startingSaved+'  Savings goal: $'+savingsG);
+                if(startingSaved > savingsG) {
+                    $("#displayRetireResults").append("<b>You will achieve your savings goal at age "+currentAge+" with a total of $"+startingSaved+" saved!</b>");
+                    
+                } else {
+                    currentAge++;
+                }
+            }while((startingSaved <= savingsG)&& (currentAge != 101));
+            if((startingSaved < savingsG) && (currentAge == '101')) {
+                $("#displayDeath").removeClass("hidden");
+                $("#displayRetireResults").addClass("hidden");
+                console.log("You are dead");
+            }else {
+                $("#displayRetireResults").removeClass("hidden");
+                $("#displayDeath").addClass("hidden");
+                alert("You will achieve your savings goal at age "+currentAge+" with a total of $"+startingSaved+" saved!");
+            }
+        }
+    } else {
+        alert("Please complete all the inputs");
+    }
+}
+    </script>
+</footer>
+</html>
