@@ -7,8 +7,8 @@ cache:
 before_script:
   - npm install
   - npm install --save-dev jest
+  - npm start
 
 
 script: 
-  - npm start
   - npm test
