@@ -12,6 +12,7 @@
 - JavaScript
 - [jQuery 3.4.1](https://www.nuget.org/packages/jQuery)
 - [Jest](https://jestjs.io/)
+- [NightWatch (End-to-End Testing)](https://nightwatchjs.org/)
 
 
 ### Applications Used: ###
