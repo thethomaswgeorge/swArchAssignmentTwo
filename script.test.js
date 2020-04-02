@@ -16,10 +16,18 @@ test("Bmi Calc: Checks BMI for some 5'2'' 159.5 lbs. Should return: overweight",
     expect(BMIfunctions(5,2,159.5)).toBe("overweight");
 });
 
-test("Retirement Calc: Checks to see if someone 50 yrs old, 50,000 salary who saves .25% of it will meet their goal of 1 million dollars.  Should return: You are dead", () => {
+test("Retirement Calc: Checks to see if someone 50 yrs old, $50,000 salary who saves 25% of it will meet their goal of 1 million dollars.  Should return: You are dead", () => {
     expect(RetireFunctions(50,50000,.25,1000000)).toBe("You are dead");
 });
 
-test("Retirement Calc: Checks to see if someone 0 years old, 10,000 salary who save .2% of it and their goal is 10,000.  Should return: not alive", () => {
+test("Retirement Calc: Checks to see if someone 0 years old, $10,000 salary who save 20% of it and their goal is 10,000.  Should return: not alive", () => {
     expect(RetireFunctions(0,10000,.2,10000)).toBe("not alive");
+});
+
+test("Retirement Calc: Checks to see if someone 25 years old, $10 salary who saves 50% of it and their goal is $20. Should return: You will be able to achieve your goal!", () => {
+    expect(RetireFunctions(20,10,.5,20)).toBe("You will be able to achieve your goal!");
+});
+
+test("Retirement Calc: Checks to see if the user just inputs blanks for everything.  Should return: Please complete all inputs", () => {
+    expect(RetireFunctions("","","","")).toBe("Please complete all inputs");
 });
