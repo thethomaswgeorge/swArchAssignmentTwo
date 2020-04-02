@@ -31,3 +31,14 @@ test("Retirement Calc: Checks to see if someone 25 years old, $10 salary who sav
 test("Retirement Calc: Checks to see if the user just inputs blanks for everything.  Should return: Please complete all inputs", () => {
     expect(RetireFunctions("","","","")).toBe("Please complete all inputs");
 });
+
+test("Retirement Calc: Checks to see if the user just inputs one number.  Should return: Please complete all inputs", () => {
+    expect(RetireFunctions(20,"","","")).toBe("Please complete all inputs");
+});
+
+test("Retirement Calc: Checks to see if the user just inputs two numbers.  Should return: Please complete all inputs", () => {
+    expect(RetireFunctions(20,10,"","")).toBe("Please complete all inputs");
+});
+test("Retirement Calc: Checks to see if the user just inputs three numbers.  Should return: Please complete all inputs", () => {
+    expect(RetireFunctions(20,10,.5,"")).toBe("Please complete all inputs");
+});
