@@ -1,7 +1,8 @@
 # Software Testing & QA | Assignment 2 #
 ### [Thomas George](http://www.thethomasgeorge.com) | twg62 | First Created: 1/28/2020 | Revised: 4/2/2020 ###
 #### [:play_or_pause_button:	](https://sw-qa-3.herokuapp.com/) | [Assignment 1 Information](http://www.thethomasgeorge.com/Assignment2/assignment.pdf) | [Assignment 2 Information](http://www.thethomasgeorge.com/Assignment2/assignmenttwo.pdf) | [Link to My Report](https://docs.google.com/document/d/1_WR8G_GCOuhsf3pUlffVqTOIFq8Ge15RlfbEMk7adOc/edit?usp=sharing) ####
-[![Coverage Status](https://coveralls.io/repos/github/thethomaswgeorge/swArchAssignmentTwo/badge.svg?branch=master)](https://coveralls.io/github/thethomaswgeorge/swArchAssignmentTwo?branch=master) [![Build Status](https://travis-ci.org/thethomaswgeorge/swArchAssignmentTwo.svg?branch=master)](https://travis-ci.org/thethomaswgeorge/swArchAssignmentTwo) [![Node version](https://img.shields.io/node/v/[NPM-MODULE-NAME].svg?style=flat)](http://nodejs.org/download/)
+[![Coverage Status](https://coveralls.io/repos/github/thethomaswgeorge/swArchAssignmentTwo/badge.svg?branch=master)](https://coveralls.io/github/thethomaswgeorge/swArchAssignmentTwo?branch=master) [![Build Status](https://travis-ci.org/thethomaswgeorge/swArchAssignmentTwo.svg?branch=master)](https://travis-ci.org/thethomaswgeorge/swArchAssignmentTwo) [![HitCount](http://hits.dwyl.com/thethomaswgeorge/swArchAssignmentTwo.svg)](http://hits.dwyl.com/thethomaswgeorge/swArchAssignmentTwo)
+
 
 
 ### Languages Used: ###
