@@ -1,164 +1,66 @@
-const functions = {
-    calcBMI: function (htFt, htIn, wt) {
-
-        if ((htFt != "") && (htIn != "") && (wt != "")) {
-            htIn = parseFloat(htIn);
-            htFt = parseFloat(htFt);
-            var kg = wt * .45;
-            var totalwt = (htFt * 12) + htIn;
-            var meter = totalwt * 0.025;
-            var meter = meter * meter;
-            var bmi = (kg / meter).toFixed(1);
-            
-            if ((bmi < 18.5) && (bmi > 0)) {
-                 return "underweight";
-            } else if ((bmi >= 18.5) && (bmi <= 24.9)) {
-                //Normal Weight
-               return "normal";
-            } else if ((bmi >= 25) && (bmi <= 29.9)) {
-                //Overweight
-                return "overweight";
-            } else if ((bmi >= 30)) {
-                //Obese
-                return "obese";
-            } else {
-                //Dead
-                return "dead";
-            }
-        } else {
-            return "error";
-        }
-    }
-}
-
-module.exports = functions;
-
-function calculateBMITest(htFt, htIn, wt) {
-
+const BMIfunctions = (htFt, htIn, wt) => {
     if ((htFt != "") && (htIn != "") && (wt != "")) {
         htIn = parseFloat(htIn);
         htFt = parseFloat(htFt);
         var kg = wt * .45;
         var totalwt = (htFt * 12) + htIn;
         var meter = totalwt * 0.025;
-        console.log("Meters: " + meter);
-        console.log("Height inches: " + totalwt);
         var meter = meter * meter;
         var bmi = (kg / meter).toFixed(1);
-        $("#yourResults").removeClass("hidden");
-        document.getElementById("yourFinalResults").innerText = bmi + '%';
-
+        
         if ((bmi < 18.5) && (bmi > 0)) {
-            document.getElementById("customMessage").innerText = 'You are currently underweight';
-            return "underweight";
+             return "underweight";
         } else if ((bmi >= 18.5) && (bmi <= 24.9)) {
             //Normal Weight
-            document.getElementById("customMessage").innerText = 'You are currently normal weight';
-            return "normal";
+           return "normal";
         } else if ((bmi >= 25) && (bmi <= 29.9)) {
             //Overweight
-            document.getElementById("customMessage").innerText = 'You are currently Overweight';
             return "overweight";
         } else if ((bmi >= 30)) {
-            document.getElementById("customMessage").innerText = 'You are currently Obese';
             //Obese
             return "obese";
         } else {
-            document.getElementById("customMessage").innerHTML = 'You are currently <i class="fas fa-skull-crossbones"></i>';
             //Dead
             return "dead";
         }
     } else {
-        alert("Please complete all the inputs");
-    }
-}
-function calculateBMI() {
-    var htFt = document.getElementById('height').value;
-    var htIn = document.getElementById('inches').value;
-    console.log(htFt);
-    console.log(htIn);
-
-    var wt = document.getElementById('weight').value;
-
-    if ((htFt != "") && (htIn != "") && (wt != "")) {
-        htIn = parseFloat(htIn);
-        htFt = parseFloat(htFt);
-        var kg = wt * .45;
-        var totalwt = (htFt * 12) + htIn;
-        var meter = totalwt * 0.025;
-        console.log("Meters: " + meter);
-        console.log("Height inches: " + totalwt);
-        var meter = meter * meter;
-        var bmi = (kg / meter).toFixed(1);
-        $("#yourResults").removeClass("hidden");
-        document.getElementById("yourFinalResults").innerText = bmi + '%';
-
-        if ((bmi < 18.5) && (bmi > 0)) {
-            document.getElementById("customMessage").innerText = 'You are currently underweight';
-        } else if ((bmi >= 18.5) && (bmi <= 24.9)) {
-            //Normal Weight
-            document.getElementById("customMessage").innerText = 'You are currently normal weight';
-        } else if ((bmi >= 25) && (bmi <= 29.9)) {
-            //Overweight
-            document.getElementById("customMessage").innerText = 'You are currently Overweight';
-        } else if ((bmi >= 30)) {
-            document.getElementById("customMessage").innerText = 'You are currently Obese';
-            //Obese
-        } else {
-            document.getElementById("customMessage").innerHTML = 'You are currently <i class="fas fa-skull-crossbones"></i>';
-            //Dead
-        }
-    } else {
-        alert("Please complete all the inputs");
+        return "error";
     }
 }
 
-
-
-function calculateRetirement() {
-    $("#displayRetireResults").addClass("hidden");
-    $("#displayDeath").addClass("hidden");
-    var currentAge = document.getElementById('currentAge').value;
-    var annualSal = document.getElementById('annualSalary').value;
-    var percentS = document.getElementById('percentSaved').value;
-    var savingsG = document.getElementById('savingsGoal').value;
-    $("#displayRetireResults").html('<table id="retirementTable"><tr><th>Age</th><th>$ User Saved</th><th>$ Employer Matched</th><th>Current Total</th></tr></table>');
-    var yearlyUserSaved;
-    var startingSaved = 0;
-    if ((currentAge != "") && (annualSal != "") && (percentS != "") && (savingsG != "")) {
-        if (currentAge <= 0) {
-            alert("You cannot save due to not being alive.");
-        } else {
-            if (percentS < '1') {
-
+const RetireFunctions = (currentAge, annualSal, percentS, savingsG) => {
+        var yearlyUserSaved;
+        var startingSaved = 0;
+        if ((currentAge != "") && (annualSal != "") && (percentS != "") && (savingsG != "")) {
+            if (currentAge <= 0) {
+                return 'not alive';
             } else {
-                percentS = percentS / 100;
-            }
-
-            do {
-                yearlyUserSaved = annualSal * percentS;
-                yearlyCompSaved = yearlyUserSaved * .35;
-                startingSaved = startingSaved + yearlyUserSaved + yearlyCompSaved;
-                $('#retirementTable tr:last').after('<tr><td>' + currentAge + '</td><td>$' + yearlyUserSaved + '</td><td>$' + yearlyCompSaved + '</td><td>$' + startingSaved + '</td></tr>');
-                console.log('Year: ' + currentAge + ' Currently Saved: $' + startingSaved + '  Savings goal: $' + savingsG);
-                if (startingSaved > savingsG) {
-                    $("#displayRetireResults").append("<b>You will achieve your savings goal at age " + currentAge + " with a total of $" + startingSaved + " saved!</b>");
-
+                if (percentS < '1') {
+    
                 } else {
-                    currentAge++;
+                    percentS = percentS / 100;
                 }
-            } while ((startingSaved <= savingsG) && (currentAge != 101));
-            if ((startingSaved < savingsG) && (currentAge == '101')) {
-                $("#displayDeath").removeClass("hidden");
-                $("#displayRetireResults").addClass("hidden");
-                console.log("You are dead");
-            } else {
-                $("#displayRetireResults").removeClass("hidden");
-                $("#displayDeath").addClass("hidden");
-                alert("You will achieve your savings goal at age " + currentAge + " with a total of $" + startingSaved + " saved!");
+    
+                do {
+                    yearlyUserSaved = annualSal * percentS;
+                    yearlyCompSaved = yearlyUserSaved * .35;
+                    startingSaved = startingSaved + yearlyUserSaved + yearlyCompSaved;
+                   
+                    if (startingSaved > savingsG) {
+                        return "You will be able to achieve your goal!";
+                    } else {
+                        currentAge++;
+                    }
+                } while ((startingSaved <= savingsG) && (currentAge != 101));
+                if ((startingSaved < savingsG) && (currentAge == '101')) {
+                    return "You are dead";
+                } else {
+                    return "You will be able to achieve your goal!";
+                }
             }
+        } else {
+            return "Please complete all inputs";
         }
-    } else {
-        alert("Please complete all the inputs");
     }
-}
+
+module.exports = { BMIfunctions, RetireFunctions };
