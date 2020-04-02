@@ -144,7 +144,7 @@ function calculateRetirement() {
                 $('#retirementTable tr:last').after('<tr><td>'+currentAge+'</td><td>$'+yearlyUserSaved+'</td><td>$'+yearlyCompSaved+'</td><td>$'+startingSaved+'</td></tr>');
                 console.log('Year: '+currentAge+' Currently Saved: $'+startingSaved+'  Savings goal: $'+savingsG);
                 if(startingSaved > savingsG) {
-                    $("#displayRetireResults").append("<b>You will achieve your savings goal at age "+currentAge+" with a total of $"+startingSaved+" saved!</b>");
+                    $("#displayRetireResults").append("<b id='retireBresults'>You will achieve your savings goal at age "+currentAge+" with a total of $"+startingSaved+" saved!</b>");
                     
                 } else {
                     currentAge++;
