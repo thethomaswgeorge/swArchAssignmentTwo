@@ -1,8 +1,8 @@
 ## Software Testing & QA | Assignment 2 ##
 ### [Thomas George](http://www.thethomasgeorge.com) | twg62 | First Created: 1/28/2020 | Revised: 3/15/2020 ###
+#### [Assignment Information](http://www.thethomasgeorge.com/Assignment2/assignment.pdf) | [Assignment 2 Information](http://www.thethomasgeorge.com/Assignment2/assignmenttwo.pdf) ####
 [![Coverage Status](https://coveralls.io/repos/github/thethomaswgeorge/swArchAssignmentTwo/badge.svg?branch=master)](https://coveralls.io/github/thethomaswgeorge/swArchAssignmentTwo?branch=master)
 ### [Click here to run the application](https://sw-qa-3.herokuapp.com/)
-#### [Assignment Information](http://www.thethomasgeorge.com/Assignment2/assignment.pdf) ####
 #### [Link to Google Doc](https://docs.google.com/document/d/1_WR8G_GCOuhsf3pUlffVqTOIFq8Ge15RlfbEMk7adOc/edit?usp=sharing) ####
 
 //https://sw-qa-3.herokuapp.com/
