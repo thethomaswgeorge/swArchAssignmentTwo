@@ -31,7 +31,7 @@ const BMIfunctions = (htFt, htIn, wt) => {
 const RetireFunctions = (currentAge, annualSal, percentS, savingsG) => {
         var yearlyUserSaved;
         var startingSaved = 0;
-        if ((currentAge != "") && (annualSal != "") && (percentS != "") && (savingsG != "")) {
+        if ((currentAge !== "") && (annualSal !== "") && (percentS !== "") && (savingsG !== "")) {
             if (currentAge <= 0) {
                 return 'not alive';
             } else {
