@@ -54,8 +54,6 @@ const RetireFunctions = (currentAge, annualSal, percentS, savingsG) => {
                 } while ((startingSaved <= savingsG) && (currentAge != 101));
                 if ((startingSaved < savingsG) && (currentAge == '101')) {
                     return "You are dead";
-                } else {
-                    return "You will be able to achieve your goal!";
                 }
             }
         } else {
