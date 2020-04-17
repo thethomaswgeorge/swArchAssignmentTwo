@@ -19,3 +19,4 @@
 - [Heroku](https://www.heroku.com/)
 - [CoverAlls](https://coveralls.io/)
 - [Travis CI](https://travis-ci.org/)
+- [SNYK](https://snyk.io/)
